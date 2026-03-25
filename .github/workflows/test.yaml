@@ -1,0 +1,32 @@
+name: checks
+
+permissions: {}
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 4 * * *"
+  merge_group:
+    types: [checks_requested]
+  workflow_dispatch: {}
+
+jobs:
+  test_debug:
+    name: Test to debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+      - name: Install toolchain
+        uses: dtolnay/rust-toolchain@e97e2d8cc328f1b50210efc529dca0028893a2d9
+        with:
+          toolchain: stable
+          targets: x86_64-unknown-linux-gnu
+      - name: run test
+        timeout-minutes: 5
+        run: cargo test

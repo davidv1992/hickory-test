@@ -1,0 +1,8 @@
+[package]
+name = "hickory-test"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+hickory-resolver = { git = "https://github.com/hickory-dns/hickory-dns", features = ["dnssec-aws-lc-rs"] }
+tokio = { version = "1.49.0", features = ["full"] }
