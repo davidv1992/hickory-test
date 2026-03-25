@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-hickory-resolver = { version = "0.25.2", features = ["dnssec-aws-lc-rs"] }
+hickory-resolver = { git = "https://github.com/hickory-dns/hickory-dns", commit = "527c9f470a418c", features = ["dnssec-aws-lc-rs"] }
 tokio = { version = "1.49.0", features = ["full"] }
